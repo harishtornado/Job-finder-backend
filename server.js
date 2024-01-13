@@ -4,6 +4,7 @@ import { configDotenv } from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/UserRoutes.js";
 import jobRoutes from "./routes/JobRoutes.js";
+import path from "path";
 
 configDotenv();
 const port = process.env.PORT;
@@ -24,6 +25,12 @@ connectDB();
 
 app.use("/user", userRoutes);
 app.use("/job", jobRoutes);
+
+app.use(express.static("client/build"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(port, () => {
   console.log("server listening on port " + port);
