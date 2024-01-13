@@ -2,8 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import { configDotenv } from "dotenv";
 import cors from "cors";
-import userRoutes from "./routes/userRoutes.js";
-import jobRoutes from "./routes/jobRoutes.js";
+import userRoutes from "./routes/UserRoutes.js";
+import jobRoutes from "./routes/JobRoutes.js";
 
 configDotenv();
 const port = process.env.PORT;
